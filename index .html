@@ -1,11 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zhark</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zhark — Acesso Privado</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 420px;
+      padding: 30px;
+    }
+
+    h1 {
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      opacity: 0.85;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background: #ffffff;
+      color: #000000;
+      border: none;
+      padding: 15px 30px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+  </style>
 </head>
+
 <body>
-    <p>ola mundo</p>
+  <div class="container">
+    <h1>ZHARK</h1>
+
+    <p>A Zhark não é pública.</p>
+
+    <p>
+      Este acesso existe para manter qualidade, controlo e foco.
+      A maioria nunca verá isto.
+    </p>
+
+    <p>
+      Se você está aqui, o acesso é seu.
+    </p>
+
+    <button onclick="downloadApp()">Baixar Zhark</button>
+  </div>
+
+  <script>
+    function downloadApp() {
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+      if (/android/i.test(ua)) {
+        alert("Disponível em breve. Contacta-nos para acesso antecipado.");
+      } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+      alert("Disponível em breve. Contacta-nos para acesso antecipado.");
+      } else {
+        alert("Abra este site no seu telemóvel para baixar a Zhark.");
+      }
+    }
+  </script>
 </body>
 </html>
