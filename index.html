@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZHARK — Seu Convite</title>
+  <title>ZHARK — Convite Limitado</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
   
   <style>
@@ -16,7 +16,7 @@
       --primary-black: #000000;
       --accent-gold: #C9A93A;
       --pure-white: #FFFFFF;
-      --highlight: #C9A93A;
+      --warning-red: #B22222;
     }
     
     * {
@@ -36,20 +36,10 @@
       position: relative;
     }
     
-    /* Elemento central */
-    .center-piece {
-      position: absolute;
-      width: 1px;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.05);
-      left: 50%;
-      top: 0;
-    }
-    
     /* Container principal */
     .invite-container {
       max-width: 480px;
-      padding: 60px 40px;
+      padding: 50px 40px;
       position: relative;
       z-index: 2;
       text-align: center;
@@ -60,44 +50,47 @@
     /* Logo */
     .zhark-logo {
       font-family: 'Wellfleet-Regular', 'Cinzel', serif;
-      font-size: 4.5rem;
+      font-size: 4rem;
       letter-spacing: 15px;
       color: var(--primary-black);
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       text-transform: uppercase;
     }
     
     /* Linha divisória */
     .divider {
-      width: 100px;
+      width: 80px;
       height: 2px;
       background: var(--accent-gold);
-      margin: 30px auto;
+      margin: 25px auto;
     }
     
     /* Mensagem principal */
     .main-message {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       line-height: 1.5;
-      margin: 40px 0;
+      margin: 30px 0;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
     
-    .percentage {
-      font-size: 2.5rem;
-      color: var(--accent-gold);
+    /* Timer principal */
+    .main-timer {
+      font-size: 3.5rem;
+      color: var(--warning-red);
       font-weight: bold;
-      margin: 20px 0;
-      display: block;
+      margin: 30px 0;
+      font-family: monospace;
+      letter-spacing: 5px;
+      animation: pulse 1s infinite;
     }
     
     /* Selo */
     .seal {
       border: 2px solid var(--primary-black);
-      padding: 15px 30px;
+      padding: 12px 25px;
       display: inline-block;
-      margin: 30px 0;
+      margin: 20px 0;
       font-size: 0.9rem;
       letter-spacing: 3px;
       text-transform: uppercase;
@@ -108,12 +101,12 @@
       background: var(--primary-black);
       color: var(--pure-white);
       border: none;
-      padding: 25px 60px;
-      font-size: 1.2rem;
+      padding: 22px 50px;
+      font-size: 1.1rem;
       font-weight: bold;
       letter-spacing: 3px;
       cursor: pointer;
-      margin: 40px 0 20px;
+      margin: 30px 0 15px;
       text-transform: uppercase;
       font-family: inherit;
       width: 100%;
@@ -134,14 +127,30 @@
     
     /* Footer */
     .footer {
-      margin-top: 50px;
+      margin-top: 40px;
       font-size: 0.7rem;
       color: rgba(0, 0, 0, 0.4);
       letter-spacing: 2px;
       text-transform: uppercase;
     }
     
-    /* Modal simples */
+    /* Timer flutuante */
+    .timer-float {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: var(--warning-red);
+      color: white;
+      padding: 10px 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 4px;
+      font-family: monospace;
+      z-index: 1000;
+      box-shadow: 0 3px 10px rgba(178, 34, 34, 0.3);
+    }
+    
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -150,7 +159,7 @@
       width: 100%;
       height: 100%;
       background: rgba(255, 255, 255, 0.98);
-      z-index: 1000;
+      z-index: 2000;
       justify-content: center;
       align-items: center;
     }
@@ -158,7 +167,7 @@
     .modal-box {
       background: var(--pure-white);
       border: 3px solid var(--primary-black);
-      padding: 50px 40px;
+      padding: 40px 30px;
       max-width: 400px;
       text-align: center;
       margin: 20px;
@@ -166,25 +175,24 @@
     
     .close-btn {
       position: absolute;
-      top: 20px;
-      right: 25px;
-      font-size: 30px;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
       color: var(--primary-black);
       cursor: pointer;
     }
     
     .modal-title {
-      font-size: 1.5rem;
-      margin-bottom: 30px;
+      font-size: 1.4rem;
+      margin-bottom: 25px;
       text-transform: uppercase;
       letter-spacing: 2px;
     }
     
-    /* Opções de acesso */
     .access-option {
       border: 1px solid rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      margin: 15px 0;
+      padding: 18px;
+      margin: 12px 0;
       cursor: pointer;
       transition: all 0.2s;
       text-align: center;
@@ -192,12 +200,59 @@
     
     .access-option:hover {
       border-color: var(--primary-black);
-      background: rgba(0, 0, 0, 0.02);
     }
     
     .option-title {
       font-weight: bold;
       margin-bottom: 5px;
+    }
+    
+    /* Tela de expirado */
+    .expired-screen {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 3000;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+    }
+    
+    .expired-content {
+      padding: 50px 40px;
+      max-width: 500px;
+    }
+    
+    .expired-title {
+      font-size: 2.5rem;
+      color: var(--warning-red);
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+    
+    .expired-message {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin: 25px 0;
+      color: #ccc;
+    }
+    
+    /* Animações */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-2px); }
+      75% { transform: translateX(2px); }
     }
     
     /* Responsivo */
@@ -208,40 +263,43 @@
       }
       
       .zhark-logo {
-        font-size: 3.5rem;
-        letter-spacing: 12px;
+        font-size: 3rem;
+        letter-spacing: 10px;
       }
       
-      .main-message {
-        font-size: 1.2rem;
-      }
-      
-      .percentage {
-        font-size: 2rem;
+      .main-timer {
+        font-size: 2.5rem;
       }
       
       .accept-btn {
         padding: 20px 40px;
-        font-size: 1.1rem;
+        font-size: 1rem;
+      }
+      
+      .timer-float {
+        top: 10px;
+        right: 10px;
+        font-size: 1rem;
+        padding: 8px 12px;
       }
     }
     
     @media (max-width: 480px) {
       .zhark-logo {
-        font-size: 2.8rem;
+        font-size: 2.5rem;
         letter-spacing: 8px;
       }
       
-      .modal-box {
-        padding: 40px 20px;
+      .main-timer {
+        font-size: 2rem;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Linha central -->
-  <div class="center-piece"></div>
+  <!-- Timer flutuante -->
+  <div class="timer-float" id="floatTimer">10:00</div>
   
   <!-- Convite -->
   <div class="invite-container">
@@ -257,18 +315,22 @@
       ACESSO CONCEDIDO
     </div>
     
-    <div class="main-message">
-      VOCÊ AGORA PERTENCE AOS
-      <span class="percentage">0,7%</span>
-      SELECIONADOS
+    <div class="main-timer" id="mainTimer">
+      10:00
     </div>
     
-    <button class="accept-btn" onclick="showAccessModal()">
+    <div class="main-message">
+      VOCÊ AGORA PERTENCE AOS
+      <br>
+      <span style="color: var(--warning-red); font-size: 1.4rem;">0,7% SELECIONADOS</span>
+    </div>
+    
+    <button class="accept-btn" id="acceptBtn" onclick="showAccessModal()">
       ACEITAR
     </button>
     
     <div class="small-text">
-      Esta oportunidade é exclusiva para você
+      Este convite expira em <span id="smallTimer">10:00</span>
     </div>
     
     <div class="footer">
@@ -296,10 +358,264 @@
         <div class="option-title">OUTRO DISPOSITIVO</div>
         <div>Receber instruções</div>
       </div>
+      
+      <div style="margin-top: 20px; font-size: 0.9rem; color: var(--warning-red);">
+        ⏰ Tempo restante: <span id="modalTimer">09:45</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Tela de tempo esgotado -->
+  <div class="expired-screen" id="expiredScreen">
+    <div class="expired-content">
+      <div class="expired-title">TEMPO ESGOTADO</div>
+      <div class="expired-message">
+        Seu convite para a ZHARK expirou.
+        <br>
+        Esta oportunidade não estará disponível novamente.
+      </div>
+      <div style="margin-top: 30px; font-size: 0.9rem; color: #888;">
+        A página será desativada em breve
+      </div>
     </div>
   </div>
   
   <script>
+    // Configurações
+    const TOTAL_TIME = 600; // 10 minutos em segundos
+    let timeLeft = TOTAL_TIME;
+    let timerInterval = null;
+    let expired = false;
+    let hiddenStartTime = null;
+    
+    // Inicializar
+    function init() {
+      // Verificar se já tem tempo guardado
+      const savedEndTime = localStorage.getItem('zhark_end_time');
+      const savedStartTime = localStorage.getItem('zhark_start_time');
+      
+      if (savedEndTime && savedStartTime) {
+        const now = Date.now();
+        const endTime = parseInt(savedEndTime);
+        
+        if (now >= endTime) {
+          // Já expirou
+          showExpired();
+          return;
+        } else {
+          // Continuar contagem
+          timeLeft = Math.floor((endTime - now) / 1000);
+        }
+      } else {
+        // Novo convite
+        const endTime = Date.now() + (TOTAL_TIME * 1000);
+        localStorage.setItem('zhark_end_time', endTime.toString());
+        localStorage.setItem('zhark_start_time', Date.now().toString());
+      }
+      
+      // Iniciar timer
+      startTimer();
+      
+      // Configurar detecção de página oculta
+      document.addEventListener('visibilitychange', handleVisibilityChange);
+      
+      // Prevenir saída
+      window.addEventListener('beforeunload', handleBeforeUnload);
+    }
+    
+    // Iniciar timer
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        if (expired) return;
+        
+        const now = Date.now();
+        const endTime = parseInt(localStorage.getItem('zhark_end_time'));
+        timeLeft = Math.max(0, Math.floor((endTime - now) / 1000));
+        
+        updateTimerDisplay();
+        
+        if (timeLeft <= 0) {
+          expireInvite();
+        }
+        
+        // Aumentar urgência nos últimos 60 segundos
+        if (timeLeft <= 60) {
+          document.getElementById('mainTimer').style.animation = 'pulse 0.5s infinite';
+        }
+        
+        // Aumentar urgência nos últimos 30 segundos
+        if (timeLeft <= 30) {
+          document.getElementById('mainTimer').style.animation = 'pulse 0.3s infinite';
+          document.getElementById('mainTimer').style.animation = 'shake 0.2s infinite';
+        }
+      }, 1000);
+    }
+    
+    // Atualizar displays do timer
+    function updateTimerDisplay() {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      const timeString = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      
+      document.getElementById('floatTimer').textContent = timeString;
+      document.getElementById('mainTimer').textContent = timeString;
+      document.getElementById('smallTimer').textContent = timeString;
+      document.getElementById('modalTimer').textContent = timeString;
+    }
+    
+    // Lidar com visibilidade da página
+    function handleVisibilityChange() {
+      if (document.hidden) {
+        // Página minimizada - marcar tempo
+        hiddenStartTime = Date.now();
+        
+        // Acelerar timer enquanto minimizado
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = setInterval(() => {
+            if (expired) return;
+            
+            const now = Date.now();
+            const endTime = parseInt(localStorage.getItem('zhark_end_time'));
+            
+            // Penalidade: tempo passa 2x mais rápido
+            const penalty = Math.floor((now - hiddenStartTime) / 500); // 0.5 segundos reais = 1 segundo de penalidade
+            const newEndTime = endTime - (penalty * 1000);
+            
+            localStorage.setItem('zhark_end_time', newEndTime.toString());
+            
+            timeLeft = Math.max(0, Math.floor((newEndTime - now) / 1000));
+            updateTimerDisplay();
+            
+            if (timeLeft <= 0) {
+              expireInvite();
+            }
+          }, 300); // Verifica a cada 300ms
+        }
+      } else {
+        // Página voltou ao foco
+        if (hiddenStartTime) {
+          const hiddenDuration = Date.now() - hiddenStartTime;
+          
+          // Aplicar penalidade final
+          if (!expired) {
+            const penalty = Math.floor(hiddenDuration / 2000); // 2 segundos reais = 1 segundo de penalidade
+            const endTime = parseInt(localStorage.getItem('zhark_end_time'));
+            const newEndTime = endTime - (penalty * 1000);
+            
+            localStorage.setItem('zhark_end_time', newEndTime.toString());
+            
+            if (newEndTime <= Date.now()) {
+              expireInvite();
+            }
+          }
+          
+          hiddenStartTime = null;
+        }
+        
+        // Restaurar timer normal
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          startTimer();
+        }
+      }
+    }
+    
+    // Expirar convite
+    function expireInvite() {
+      if (expired) return;
+      
+      expired = true;
+      clearInterval(timerInterval);
+      
+      // Limpar localStorage
+      localStorage.removeItem('zhark_end_time');
+      localStorage.removeItem('zhark_start_time');
+      
+      // Desativar botão
+      const acceptBtn = document.getElementById('acceptBtn');
+      acceptBtn.disabled = true;
+      acceptBtn.style.background = '#444';
+      acceptBtn.style.color = '#666';
+      acceptBtn.style.cursor = 'not-allowed';
+      acceptBtn.onclick = null;
+      
+      // Mostrar tela de expirado
+      setTimeout(() => {
+        showExpired();
+      }, 1000);
+    }
+    
+    // Mostrar tela de expirado
+    function showExpired() {
+      document.getElementById('expiredScreen').style.display = 'flex';
+      
+      // Redirecionar após 10 segundos
+      setTimeout(() => {
+        document.body.innerHTML = `
+          <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background: #000; color: #333; text-align: center; font-family: sans-serif;">
+            <div>
+              <div style="font-size: 2rem; margin-bottom: 20px; letter-spacing: 5px;">ZHARK</div>
+              <div style="font-size: 1rem; letter-spacing: 2px;">CONVITE EXPIRADO</div>
+            </div>
+          </div>
+        `;
+      }, 10000);
+    }
+    
+    // Prevenir saída da página
+    function handleBeforeUnload(e) {
+      if (!expired && timeLeft > 0) {
+        e.preventDefault();
+        e.returnValue = 'Se você sair agora, perderá seu convite para a ZHARK.';
+      }
+    }
+    
+    // Modal de acesso
+    function showAccessModal() {
+      if (expired) return;
+      document.getElementById('accessModal').style.display = 'flex';
+    }
+    
+    function closeModal() {
+      document.getElementById('accessModal').style.display = 'none';
+    }
+    
+    // Processar acesso
+    function proceedAccess(choice) {
+      if (expired) return;
+      
+      // Salvar aceitação
+      localStorage.setItem('zhark_accepted', 'true');
+      clearInterval(timerInterval);
+      
+      const device = detectDevice();
+      let message = '';
+      let url = '';
+      
+      if (choice === 'android') {
+        url = 'https://zhark-society.com/download/app.apk';
+        message = '📱 Baixando ZHARK para Android...\n\nCódigo: ZHARK-' + Date.now().toString().slice(-6);
+      } else if (choice === 'ios') {
+        url = 'https://apps.apple.com/app/zhark-society/id1234567890';
+        message = '📱 Abrindo App Store...\n\nCódigo: ZHARK-' + Date.now().toString().slice(-6);
+      } else {
+        message = '📧 Instruções enviadas para seu email.';
+      }
+      
+      alert(message);
+      
+      if (url && ((choice === 'android' && device === 'android') || (choice === 'ios' && device === 'ios'))) {
+        setTimeout(() => {
+          window.location.href = url;
+        }, 1000);
+      } else if (choice !== 'desktop') {
+        showQRCode(choice);
+      }
+      
+      closeModal();
+    }
+    
     // Detectar dispositivo
     function detectDevice() {
       const ua = navigator.userAgent;
@@ -308,109 +624,49 @@
       return 'desktop';
     }
     
-    // Mostrar modal
-    function showAccessModal() {
-      document.getElementById('accessModal').style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-    
-    // Fechar modal
-    function closeModal() {
-      document.getElementById('accessModal').style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-    
-    // Processar acesso
-    function proceedAccess(choice) {
-      const device = detectDevice();
-      const urls = {
-        android: 'https://zhark-society.com/download/app.apk',
-        ios: 'https://apps.apple.com/app/zhark-society/id1234567890'
-      };
-      
-      let message = '';
-      let redirect = '';
-      
-      if (choice === 'android') {
-        if (device === 'android') {
-          message = '📱 Baixando ZHARK...\n\nVocê está entrando nos 0,7%.\n\nUse o código: ZHARK-2026';
-          redirect = urls.android;
-        } else {
-          message = '📱 Abra este link no seu Android para baixar o aplicativo ZHARK.';
-        }
-      }
-      else if (choice === 'ios') {
-        if (device === 'ios') {
-          message = '📱 Abrindo App Store...\n\nVocê está entrando nos 0,7%.\n\nUse o código: ZHARK-2026';
-          redirect = urls.ios;
-        } else {
-          message = '📱 Abra este link no seu iPhone para baixar o aplicativo ZHARK.';
-        }
-      }
-      else {
-        message = '📧 Instruções enviadas.\n\nVerifique seu email para acessar a ZHARK.';
-      }
-      
-      alert(message);
-      
-      if (redirect && ((choice === 'android' && device === 'android') || (choice === 'ios' && device === 'ios'))) {
-        setTimeout(() => {
-          window.location.href = redirect;
-        }, 1000);
-      } else if (choice !== 'desktop') {
-        // Mostrar QR para dispositivos diferentes
-        showQRCode(choice);
-      }
-      
-      closeModal();
-    }
-    
     // Mostrar QR code
     function showQRCode(type) {
-      const qrBox = document.createElement('div');
-      qrBox.style.cssText = `
+      const qrDiv = document.createElement('div');
+      qrDiv.style.cssText = `
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         background: white;
-        z-index: 1001;
+        z-index: 4000;
         display: flex;
         justify-content: center;
         align-items: center;
       `;
       
-      const url = type === 'android' ? 'zhark-society.com/android' : 'zhark-society.com/ios';
-      
-      qrBox.innerHTML = `
-        <div style="text-align: center; padding: 40px; border: 2px solid black; max-width: 320px; background: white;">
-          <div style="font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 2px;">ESCANEIE NO CELULAR</div>
-          <div style="width: 200px; height: 200px; margin: 20px auto; background: #f5f5f5; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd;">
-            [QR CODE]<br>${url}
+      qrDiv.innerHTML = `
+        <div style="text-align: center; padding: 30px; border: 2px solid black; max-width: 300px;">
+          <div style="font-size: 1.2rem; margin-bottom: 20px;">USE SEU CELULAR</div>
+          <div style="width: 200px; height: 200px; margin: 20px auto; background: #f5f5f5; display: flex; align-items: center; justify-content: center; border: 1px solid #ccc;">
+            [QR CODE]
           </div>
-          <div style="margin: 20px 0; font-size: 0.9rem;">Código: ZHARK-2026</div>
-          <button onclick="this.parentElement.parentElement.remove()" style="background: black; color: white; border: none; padding: 15px 30px; font-family: inherit; cursor: pointer; margin-top: 10px;">
+          <div style="margin: 20px 0; font-family: monospace; background: black; color: #C9A93A; padding: 10px;">
+            ZHARK-${Date.now().toString().slice(-6)}
+          </div>
+          <button onclick="this.parentElement.parentElement.remove()" style="background: black; color: white; border: none; padding: 12px 30px; cursor: pointer;">
             FECHAR
           </button>
         </div>
       `;
       
-      document.body.appendChild(qrBox);
+      document.body.appendChild(qrDiv);
     }
     
-    // Fechar modal ao clicar fora
-    window.onclick = function(event) {
-      const modal = document.getElementById('accessModal');
-      if (event.target === modal) {
-        closeModal();
-      }
-    }
-    
-    // Inicialização
-    document.addEventListener('DOMContentLoaded', () => {
-      console.log('%cZHARK — Convite Ativo', 'background: #000; color: #C9A93A; padding: 10px; font-weight: bold;');
-    });
+    // Inicializar ao carregar
+    window.onload = function() {
+      init();
+      
+      // Fechar modal ao clicar fora
+      window.onclick = function(event) {
+        if (event.target.id === 'accessModal') closeModal();
+      };
+    };
   </script>
 </body>
 </html>
