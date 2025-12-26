@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZHARK — Portal dos Escolhidos</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <title>ZHARK — Seu Convite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
   
   <style>
+    @font-face {
+      font-family: 'Wellfleet-Regular';
+      src: url('https://fonts.gstatic.com/s/wellfleet/v18/nuF7D_LfQJb3VYgX6eyT42aLDhO2HA.woff2') format('woff2');
+    }
+    
     :root {
-      --primary-gold: #D4AF37;
-      --dark-bg: #0A0A0A;
-      --medium-bg: #111111;
-      --light-text: #F5F5F5;
-      --accent-red: #8B0000;
+      --primary-black: #000000;
+      --accent-gold: #C9A93A;
+      --pure-white: #FFFFFF;
+      --highlight: #C9A93A;
     }
     
     * {
@@ -24,189 +26,122 @@
     }
     
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--dark-bg);
-      color: var(--light-text);
+      font-family: 'Wellfleet-Regular', 'Cinzel', serif;
+      background: var(--pure-white);
+      color: var(--primary-black);
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
-      overflow-x: hidden;
     }
     
-    /* Efeito de partículas sutis no fundo */
-    .particles {
+    /* Elemento central */
+    .center-piece {
       position: absolute;
+      width: 1px;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.05);
+      left: 50%;
       top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      pointer-events: none;
-    }
-    
-    .particle {
-      position: absolute;
-      background: rgba(212, 175, 55, 0.2);
-      border-radius: 50%;
     }
     
     /* Container principal */
-    .portal-container {
-      max-width: 520px;
-      padding: 40px;
+    .invite-container {
+      max-width: 480px;
+      padding: 60px 40px;
       position: relative;
       z-index: 2;
       text-align: center;
-      background: rgba(10, 10, 10, 0.85);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      border: 1px solid rgba(212, 175, 55, 0.1);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 
-                  0 0 0 1px rgba(212, 175, 55, 0.05),
-                  inset 0 0 30px rgba(0, 0, 0, 0.5);
+      border: 3px solid var(--primary-black);
       margin: 20px;
     }
     
-    /* Logo e título */
-    .logo-container {
-      margin-bottom: 30px;
-      position: relative;
-    }
-    
-    .logo {
-      font-family: 'Cinzel', serif;
-      font-size: 3.5rem;
-      font-weight: 700;
-      letter-spacing: 8px;
-      color: var(--primary-gold);
-      text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-      position: relative;
-      display: inline-block;
-      margin-bottom: 10px;
-    }
-    
-    .logo::after {
-      content: "";
-      position: absolute;
-      bottom: -15px;
-      left: 20%;
-      width: 60%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
-    }
-    
-    .subtitle {
-      font-size: 0.9rem;
-      letter-spacing: 4px;
-      color: rgba(245, 245, 245, 0.7);
+    /* Logo */
+    .zhark-logo {
+      font-family: 'Wellfleet-Regular', 'Cinzel', serif;
+      font-size: 4.5rem;
+      letter-spacing: 15px;
+      color: var(--primary-black);
+      margin-bottom: 20px;
       text-transform: uppercase;
+    }
+    
+    /* Linha divisória */
+    .divider {
+      width: 100px;
+      height: 2px;
+      background: var(--accent-gold);
+      margin: 30px auto;
+    }
+    
+    /* Mensagem principal */
+    .main-message {
+      font-size: 1.4rem;
+      line-height: 1.5;
+      margin: 40px 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .percentage {
+      font-size: 2.5rem;
+      color: var(--accent-gold);
+      font-weight: bold;
+      margin: 20px 0;
+      display: block;
+    }
+    
+    /* Selo */
+    .seal {
+      border: 2px solid var(--primary-black);
+      padding: 15px 30px;
+      display: inline-block;
+      margin: 30px 0;
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    
+    /* Botão */
+    .accept-btn {
+      background: var(--primary-black);
+      color: var(--pure-white);
+      border: none;
+      padding: 25px 60px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      letter-spacing: 3px;
+      cursor: pointer;
+      margin: 40px 0 20px;
+      text-transform: uppercase;
+      font-family: inherit;
+      width: 100%;
+      transition: all 0.3s;
+    }
+    
+    .accept-btn:hover {
+      background: var(--accent-gold);
+      color: var(--primary-black);
+    }
+    
+    .small-text {
+      font-size: 0.8rem;
+      color: rgba(0, 0, 0, 0.5);
+      letter-spacing: 1px;
       margin-top: 10px;
     }
     
-    /* Mensagens de status */
-    .status-message {
-      background: rgba(139, 0, 0, 0.1);
-      border-left: 3px solid var(--accent-red);
-      padding: 15px;
-      text-align: left;
-      margin: 25px 0;
-      border-radius: 0 4px 4px 0;
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-    
-    .status-icon {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      background: var(--accent-red);
-      border-radius: 50%;
-      margin-right: 10px;
-      animation: pulse 2s infinite;
-    }
-    
-    /* Textos de boas-vindas */
-    .welcome-text {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin-bottom: 25px;
-      color: rgba(245, 245, 245, 0.9);
-    }
-    
-    .highlight {
-      color: var(--primary-gold);
-      font-weight: 500;
-    }
-    
-    /* Contador de membros */
-    .members-counter {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 30px 0;
-      font-size: 0.9rem;
-      color: rgba(245, 245, 245, 0.7);
-    }
-    
-    .counter-number {
-      font-family: 'Cinzel', serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--primary-gold);
-      margin: 0 15px;
-      text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-    }
-    
-    /* Botão de acesso */
-    .access-button {
-      background: linear-gradient(135deg, rgba(212, 175, 55, 0.9), rgba(139, 0, 0, 0.8));
-      color: #0A0A0A;
-      border: none;
-      padding: 18px 40px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-      margin-top: 20px;
-      width: 100%;
-      max-width: 300px;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
+    /* Footer */
+    .footer {
+      margin-top: 50px;
+      font-size: 0.7rem;
+      color: rgba(0, 0, 0, 0.4);
+      letter-spacing: 2px;
       text-transform: uppercase;
-      font-family: 'Inter', sans-serif;
     }
     
-    .access-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: 0.5s;
-      z-index: -1;
-    }
-    
-    .access-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
-    }
-    
-    .access-button:hover::before {
-      left: 100%;
-    }
-    
-    .access-button:active {
-      transform: translateY(-1px);
-    }
-    
-    /* Modal de acesso */
+    /* Modal simples */
     .modal {
       display: none;
       position: fixed;
@@ -214,301 +149,267 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      z-index: 100;
+      background: rgba(255, 255, 255, 0.98);
+      z-index: 1000;
       justify-content: center;
       align-items: center;
-      animation: fadeIn 0.3s ease;
     }
     
-    .modal-content {
-      background: var(--medium-bg);
-      width: 90%;
-      max-width: 500px;
-      border-radius: 12px;
-      padding: 40px;
+    .modal-box {
+      background: var(--pure-white);
+      border: 3px solid var(--primary-black);
+      padding: 50px 40px;
+      max-width: 400px;
       text-align: center;
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
-      position: relative;
+      margin: 20px;
     }
     
-    .close-modal {
+    .close-btn {
       position: absolute;
       top: 20px;
       right: 25px;
-      font-size: 28px;
-      color: rgba(245, 245, 245, 0.7);
+      font-size: 30px;
+      color: var(--primary-black);
       cursor: pointer;
-      transition: color 0.3s;
-    }
-    
-    .close-modal:hover {
-      color: var(--primary-gold);
     }
     
     .modal-title {
-      font-family: 'Cinzel', serif;
-      font-size: 2rem;
-      color: var(--primary-gold);
-      margin-bottom: 20px;
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      text-transform: uppercase;
       letter-spacing: 2px;
     }
     
-    .device-option {
-      background: rgba(17, 17, 17, 0.8);
-      border: 1px solid rgba(212, 175, 55, 0.1);
-      border-radius: 8px;
+    /* Opções de acesso */
+    .access-option {
+      border: 1px solid rgba(0, 0, 0, 0.1);
       padding: 20px;
       margin: 15px 0;
       cursor: pointer;
-      transition: all 0.3s;
-      text-align: left;
-      display: flex;
-      align-items: center;
+      transition: all 0.2s;
+      text-align: center;
     }
     
-    .device-option:hover {
-      border-color: rgba(212, 175, 55, 0.4);
-      background: rgba(30, 30, 30, 0.8);
+    .access-option:hover {
+      border-color: var(--primary-black);
+      background: rgba(0, 0, 0, 0.02);
     }
     
-    .device-icon {
-      font-size: 2rem;
-      margin-right: 20px;
-      color: var(--primary-gold);
-    }
-    
-    .device-text h3 {
-      color: var(--primary-gold);
+    .option-title {
+      font-weight: bold;
       margin-bottom: 5px;
-      font-size: 1.2rem;
     }
     
-    .device-text p {
-      color: rgba(245, 245, 245, 0.7);
-      font-size: 0.9rem;
-    }
-    
-    /* Footer */
-    .footer {
-      margin-top: 40px;
-      font-size: 0.8rem;
-      color: rgba(245, 245, 245, 0.4);
-      letter-spacing: 1px;
-    }
-    
-    /* Animações */
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    /* Responsividade */
-    @media (max-width: 600px) {
-      .portal-container {
-        padding: 30px 20px;
+    /* Responsivo */
+    @media (max-width: 768px) {
+      .invite-container {
+        padding: 40px 20px;
         margin: 15px;
       }
       
-      .logo {
-        font-size: 2.8rem;
-        letter-spacing: 6px;
+      .zhark-logo {
+        font-size: 3.5rem;
+        letter-spacing: 12px;
       }
       
-      .modal-content {
-        padding: 30px 20px;
+      .main-message {
+        font-size: 1.2rem;
+      }
+      
+      .percentage {
+        font-size: 2rem;
+      }
+      
+      .accept-btn {
+        padding: 20px 40px;
+        font-size: 1.1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .zhark-logo {
+        font-size: 2.8rem;
+        letter-spacing: 8px;
+      }
+      
+      .modal-box {
+        padding: 40px 20px;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Efeito de partículas no fundo -->
-  <div class="particles" id="particles"></div>
+  <!-- Linha central -->
+  <div class="center-piece"></div>
   
-  <!-- Container principal -->
-  <div class="portal-container">
-    <div class="logo-container">
-      <div class="logo">ZHARK</div>
-      <div class="subtitle">Sociedade dos Escolhidos</div>
+  <!-- Convite -->
+  <div class="invite-container">
+    <div class="zhark-logo">ZHARK</div>
+    
+    <div class="divider"></div>
+    
+    <div class="main-message">
+      SEU CONVITE CHEGOU
     </div>
     
-    <div class="status-message">
-      <span class="status-icon"></span>
-      <strong>Sistema de acesso restrito ativo</strong> — Apenas membros autorizados podem prosseguir
+    <div class="seal">
+      ACESSO CONCEDIDO
     </div>
     
-    <p class="welcome-text">
-      Saudações, <span class="highlight">visitante selecionado</span>. Você foi identificado como digno de adentrar os domínios da Zhark.
-    </p>
-    
-    <p class="welcome-text">
-      Nossa sociedade opera sob os mais rigorosos padrões de <span class="highlight">excelência e discrição</span>. Aqui, a qualidade prevalece sobre a quantidade, e cada membro é escolhido a dedo.
-    </p>
-    
-    <p class="welcome-text">
-      Se você está diante deste portal, significa que o <span class="highlight">acesso já lhe foi concedido</span>. Apenas os merecedores chegam até aqui.
-    </p>
-    
-    <div class="members-counter">
-      Membros ativos: <span class="counter-number" id="memberCount">247</span> em todo o mundo
+    <div class="main-message">
+      VOCÊ AGORA PERTENCE AOS
+      <span class="percentage">0,7%</span>
+      SELECIONADOS
     </div>
     
-    <button class="access-button" onclick="showAccessModal()">
-      Reivindicar Meu Acesso
+    <button class="accept-btn" onclick="showAccessModal()">
+      ACEITAR
     </button>
     
+    <div class="small-text">
+      Esta oportunidade é exclusiva para você
+    </div>
+    
     <div class="footer">
-      ZHARK SOCIETY © 2023 — Acesso restrito aos eleitos
+      ZHARK SOCIETY © 2026
     </div>
   </div>
   
   <!-- Modal de acesso -->
   <div class="modal" id="accessModal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="closeModal()">&times;</span>
-      <h2 class="modal-title">Selecionar Portal de Acesso</h2>
-      <p style="margin-bottom: 30px; color: rgba(245, 245, 245, 0.8);">
-        Escolha o dispositivo através do qual você acessará os domínios da Zhark.
-      </p>
+    <div class="modal-box">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <div class="modal-title">COMO VOCÊ PREFERE ENTRAR?</div>
       
-      <div class="device-option" onclick="requestAccess('android')">
-        <div class="device-icon">🤖</div>
-        <div class="device-text">
-          <h3>Portal Android</h3>
-          <p>Acesso para dispositivos móveis com sistema Android</p>
-        </div>
+      <div class="access-option" onclick="proceedAccess('android')">
+        <div class="option-title">ANDROID</div>
+        <div>Baixar aplicativo ZHARK</div>
       </div>
       
-      <div class="device-option" onclick="requestAccess('ios')">
-        <div class="device-icon">🍎</div>
-        <div class="device-text">
-          <h3>Portal iOS</h3>
-          <p>Acesso para iPhone, iPad e dispositivos Apple</p>
-        </div>
+      <div class="access-option" onclick="proceedAccess('ios')">
+        <div class="option-title">IPHONE</div>
+        <div>Abrir na App Store</div>
       </div>
       
-      <div class="device-option" onclick="requestAccess('desktop')">
-        <div class="device-icon">💻</div>
-        <div class="device-text">
-          <h3>Portal Desktop</h3>
-          <p>Acesso para computadores e estações de trabalho</p>
-        </div>
+      <div class="access-option" onclick="proceedAccess('desktop')">
+        <div class="option-title">OUTRO DISPOSITIVO</div>
+        <div>Receber instruções</div>
       </div>
-      
-      <p style="margin-top: 30px; font-size: 0.9rem; color: rgba(245, 245, 245, 0.6);">
-        Após a seleção, as instruções de acesso serão reveladas.
-      </p>
     </div>
   </div>
   
   <script>
-    // Criar partículas no fundo
-    function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      const particleCount = 40;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        
-        // Tamanho e posição aleatórias
-        const size = Math.random() * 4 + 1;
-        const posX = Math.random() * 100;
-        const posY = Math.random() * 100;
-        
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${posX}%`;
-        particle.style.top = `${posY}%`;
-        
-        // Animação de movimento
-        const duration = Math.random() * 20 + 10;
-        const delay = Math.random() * 5;
-        
-        particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite alternate`;
-        
-        particlesContainer.appendChild(particle);
-      }
+    // Detectar dispositivo
+    function detectDevice() {
+      const ua = navigator.userAgent;
+      if (/Android/i.test(ua)) return 'android';
+      if (/iPad|iPhone|iPod/i.test(ua)) return 'ios';
+      return 'desktop';
     }
     
-    // Contador de membros animado
-    function animateMemberCount() {
-      const memberElement = document.getElementById('memberCount');
-      const targetCount = 247;
-      let currentCount = 0;
-      const increment = Math.ceil(targetCount / 100);
-      const interval = setInterval(() => {
-        currentCount += increment;
-        if (currentCount >= targetCount) {
-          currentCount = targetCount;
-          clearInterval(interval);
-        }
-        memberElement.textContent = currentCount;
-      }, 20);
-    }
-    
-    // Mostrar modal de acesso
+    // Mostrar modal
     function showAccessModal() {
-      const modal = document.getElementById('accessModal');
-      modal.style.display = 'flex';
+      document.getElementById('accessModal').style.display = 'flex';
       document.body.style.overflow = 'hidden';
     }
     
     // Fechar modal
     function closeModal() {
-      const modal = document.getElementById('accessModal');
-      modal.style.display = 'none';
+      document.getElementById('accessModal').style.display = 'none';
       document.body.style.overflow = 'auto';
     }
     
-    // Solicitar acesso baseado no dispositivo
-    function requestAccess(deviceType) {
-      const ua = navigator.userAgent || navigator.vendor || window.opera;
-      let message = "";
+    // Processar acesso
+    function proceedAccess(choice) {
+      const device = detectDevice();
+      const urls = {
+        android: 'https://zhark-society.com/download/app.apk',
+        ios: 'https://apps.apple.com/app/zhark-society/id1234567890'
+      };
       
-      // Verificar compatibilidade
-      if (deviceType === 'android' && !/android/i.test(ua)) {
-        message = "Você selecionou o Portal Android, mas parece que seu dispositivo não é compatível. Deseja receber instruções por e-mail quando estiver disponível para sua plataforma?";
-      } else if (deviceType === 'ios' && !/iPad|iPhone|iPod/.test(ua)) {
-        message = "Você selecionou o Portal iOS, mas parece que seu dispositivo não é compatível. Deseja receber instruções por e-mail quando estiver disponível para sua plataforma?";
-      } else if (deviceType === 'desktop' && (/android/i.test(ua) || /iPad|iPhone|iPod/.test(ua))) {
-        message = "Você selecionou o Portal Desktop, mas parece que está acessando de um dispositivo móvel. Deseja receber instruções para configurar o acesso via desktop?";
-      } else {
-        // Mensagens específicas para cada dispositivo
-        const messages = {
-          android: "Ótima escolha. O portal Android está em fase de implantação para membros selecionados. Em breve você receberá instruções exclusivas para ativação.",
-          ios: "Excelente. O portal iOS está sendo preparado para iniciados. Você será contactado em breve com detalhes de acesso.",
-          desktop: "Perfeito. O acesso via desktop é reservado aos membros de maior confiança. As credenciais e instruções serão enviadas para você em até 48 horas."
-        };
-        message = messages[deviceType];
+      let message = '';
+      let redirect = '';
+      
+      if (choice === 'android') {
+        if (device === 'android') {
+          message = '📱 Baixando ZHARK...\n\nVocê está entrando nos 0,7%.\n\nUse o código: ZHARK-2026';
+          redirect = urls.android;
+        } else {
+          message = '📱 Abra este link no seu Android para baixar o aplicativo ZHARK.';
+        }
+      }
+      else if (choice === 'ios') {
+        if (device === 'ios') {
+          message = '📱 Abrindo App Store...\n\nVocê está entrando nos 0,7%.\n\nUse o código: ZHARK-2026';
+          redirect = urls.ios;
+        } else {
+          message = '📱 Abra este link no seu iPhone para baixar o aplicativo ZHARK.';
+        }
+      }
+      else {
+        message = '📧 Instruções enviadas.\n\nVerifique seu email para acessar a ZHARK.';
       }
       
-      // Mostrar mensagem de status
-      alert(`ZHARK SOCIETY\n\n${message}\n\nAgradecemos sua paciência e compreensão.`);
+      alert(message);
       
-      // Fechar modal após seleção
+      if (redirect && ((choice === 'android' && device === 'android') || (choice === 'ios' && device === 'ios'))) {
+        setTimeout(() => {
+          window.location.href = redirect;
+        }, 1000);
+      } else if (choice !== 'desktop') {
+        // Mostrar QR para dispositivos diferentes
+        showQRCode(choice);
+      }
+      
       closeModal();
     }
     
-    // Inicializar quando a página carregar
-    document.addEventListener('DOMContentLoaded', () => {
-      createParticles();
-      animateMemberCount();
+    // Mostrar QR code
+    function showQRCode(type) {
+      const qrBox = document.createElement('div');
+      qrBox.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        z-index: 1001;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      `;
       
-      // Fechar modal se clicar fora do conteúdo
-      window.onclick = function(event) {
-        const modal = document.getElementById('accessModal');
-        if (event.target === modal) {
-          closeModal();
-        }
+      const url = type === 'android' ? 'zhark-society.com/android' : 'zhark-society.com/ios';
+      
+      qrBox.innerHTML = `
+        <div style="text-align: center; padding: 40px; border: 2px solid black; max-width: 320px; background: white;">
+          <div style="font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 2px;">ESCANEIE NO CELULAR</div>
+          <div style="width: 200px; height: 200px; margin: 20px auto; background: #f5f5f5; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd;">
+            [QR CODE]<br>${url}
+          </div>
+          <div style="margin: 20px 0; font-size: 0.9rem;">Código: ZHARK-2026</div>
+          <button onclick="this.parentElement.parentElement.remove()" style="background: black; color: white; border: none; padding: 15px 30px; font-family: inherit; cursor: pointer; margin-top: 10px;">
+            FECHAR
+          </button>
+        </div>
+      `;
+      
+      document.body.appendChild(qrBox);
+    }
+    
+    // Fechar modal ao clicar fora
+    window.onclick = function(event) {
+      const modal = document.getElementById('accessModal');
+      if (event.target === modal) {
+        closeModal();
       }
+    }
+    
+    // Inicialização
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('%cZHARK — Convite Ativo', 'background: #000; color: #C9A93A; padding: 10px; font-weight: bold;');
     });
   </script>
 </body>
