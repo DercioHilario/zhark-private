@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Z'up · Política de Privacidade, Termos e Restauração</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #111;
+            line-height: 1.55;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            background: #fff;
+        }
+
+        /* cabeçalho minimalista */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #e6e6e6;
+            padding-bottom: 1.2rem;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: #000;
+        }
+
+        .logo span {
+            font-weight: 300;
+            color: #2c2c2c;
+        }
+
+        .tagline {
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 0.3rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* abas clean */
+        .tabs {
+            display: flex;
+            gap: 0.3rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eaeaea;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 0.65rem 1.4rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            font-family: inherit;
+            color: #555;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: -1px;
+            border-radius: 0;
+        }
+
+        .tab-btn.active {
+            color: #000;
+            border-bottom: 2px solid #000;
+            font-weight: 600;
+        }
+
+        .tab-btn:hover:not(.active) {
+            color: #000;
+            background: #f7f7f7;
+        }
+
+        /* painéis */
+        .panel {
+            display: none;
+            animation: fade 0.2s ease;
+        }
+
+        .panel.active-panel {
+            display: block;
+        }
+
+        @keyframes fade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* conteúdo com texto justificado e melhor espaçamento */
+        .legal-content {
+            font-size: 0.96rem;
+            color: #1c1c1e;
+            text-align: justify;
+        }
+
+        .legal-content h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 1rem 0 1rem 0;
+            color: #000;
+            letter-spacing: -0.3px;
+            text-align: left;
+            border-left: 4px solid #000;
+            padding-left: 1rem;
+        }
+
+        .legal-content h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.7rem 0;
+            color: #000;
+            text-align: left;
+        }
+
+        .legal-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .legal-content ul, .legal-content ol {
+            margin: 0.6rem 0 1rem 2rem;
+            text-align: justify;
+        }
+
+        .legal-content li {
+            margin-bottom: 0.4rem;
+        }
+
+        .legal-content strong {
+            color: #000;
+            font-weight: 600;
+        }
+
+        .legal-content hr {
+            margin: 1.8rem 0;
+            border: none;
+            border-top: 1px solid #e2e2e2;
+        }
+
+        /* bloco de definições estilo cartão sutil */
+        .definitions-box {
+            background: #fafafc;
+            border: 1px solid #ececec;
+            border-radius: 16px;
+            padding: 1.2rem 1.5rem;
+            margin: 1rem 0 1.5rem 0;
+        }
+
+        .definitions-box p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* caixa de restauração */
+        .restore-card {
+            background: #f6f6f8;
+            border: 1px solid #e2e2e2;
+            border-radius: 20px;
+            padding: 1.4rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .btn-restore {
+            background: #000;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            font-family: inherit;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-restore:hover {
+            background: #2c2c2c;
+            transform: scale(0.98);
+        }
+
+        .btn-restore:disabled {
+            background: #aaa;
+            cursor: not-allowed;
+        }
+
+        .footer-note {
+            margin-top: 2.5rem;
+            padding-top: 1.2rem;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #7a7a7e;
+            border-top: 1px solid #ececec;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1.2rem; }
+            .tab-btn { padding: 0.5rem 1rem; font-size: 0.8rem; }
+            .legal-content { font-size: 0.9rem; }
+            .legal-content h2 { font-size: 1.3rem; }
+            .definitions-box { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="logo">Z'UP<span>.</span></div>
+        <div class="tagline">Documentos legais — transparência e compromisso</div>
+    </div>
+
+    <div class="tabs">
+        <button class="tab-btn active" data-tab="privacy">Política de Privacidade</button>
+        <button class="tab-btn" data-tab="terms">Termos de Uso</button>
+        <button class="tab-btn" data-tab="restore">Restauração de Compra</button>
+    </div>
+
+    <!-- ========== POLÍTICA DE PRIVACIDADE ========== -->
+    <div id="privacyPanel" class="panel active-panel">
+        <div class="legal-content">
+            <h2>Política de Privacidade</h2>
+            <p><strong>Última atualização:</strong> 16 de Junho de 2026</p>
+            <p>Esta Política de Privacidade descreve como o Z'up coleta, utiliza e protege suas informações pessoais. Ao utilizar nosso aplicativo, você concorda com os termos aqui descritos.</p>
+
+            <h3>Interpretação e Definições</h3>
+            <p><strong>Interpretação</strong><br>
+            As palavras com inicial maiúscula possuem significados definidos nas condições abaixo. As definições aplicam-se tanto no singular quanto no plural.</p>
+
+            <div class="definitions-box">
+                <p><strong>Conta:</strong> Registro único criado para acesso ao Serviço.</p>
+                <p><strong>Afiliada:</strong> Entidade que controla, é controlada ou está sob controle comum com a Empresa.</p>
+                <p><strong>Empresa:</strong> Refere-se ao Z'up, com sede no Brasil.</p>
+                <p><strong>Cookies:</strong> Pequenos arquivos armazenados no seu dispositivo com informações de navegação.</p>
+                <p><strong>Dispositivo:</strong> Qualquer equipamento (computador, celular, tablet) que acessa o Serviço.</p>
+                <p><strong>Serviço:</strong> O aplicativo Z'up e site associado.</p>
+                <p><strong>Você:</strong> Pessoa física que utiliza o Serviço.</p>
+            </div>
+
+            <h3>Coleta e Uso de Dados Pessoais</h3>
+            <p><strong>Informações fornecidas pelo usuário:</strong> Nome, endereço de e-mail, foto de perfil, senha criptografada, conteúdo publicado (textos, imagens, vídeos) e eventuais metas ou registros inseridos no aplicativo.</p>
+            <p><strong>Informações coletadas automaticamente:</strong> Modelo do dispositivo, sistema operacional, idioma, endereço IP, data/hora de acesso, estatísticas de uso e registros de desempenho.</p>
+
+            <h3>Uso dos Dados</h3>
+            <p>O Z'up utiliza as informações para: (i) criar e gerenciar sua conta; (ii) permitir interação dentro da plataforma; (iii) melhorar a experiência do usuário; (iv) garantir segurança e detectar atividades suspeitas; (v) desenvolver novos recursos e oferecer suporte.</p>
+
+            <h3>Compartilhamento de Dados</h3>
+            <p>Não vendemos nem alugamos dados pessoais. Compartilhamos informações apenas com prestadores de serviços essenciais (hospedagem, processadores de pagamento) ou quando exigido por lei.</p>
+
+            <h3>Segurança e Retenção</h3>
+            <p>Adotamos medidas técnicas e organizacionais para proteger seus dados. Você pode solicitar a exclusão da sua conta a qualquer momento. Algumas informações podem ser mantidas por obrigação legal.</p>
+
+            <h3>Direitos do Titular</h3>
+            <p>Você tem direito a acessar, corrigir ou solicitar a eliminação de seus dados pessoais. Para isso, entre em contato pelo e-mail indicado abaixo.</p>
+
+            <h3>Contato</h3>
+            <p><strong>E-mail:</strong> zup@gmail.com</p>
+            <hr>
+            <p style="font-size: 0.85rem;">Ao continuar utilizando o Z'up, você declara estar ciente e de acordo com esta Política de Privacidade.</p>
+        </div>
+    </div>
+
+    <!-- ========== TERMOS DE USO ========== -->
+    <div id="termsPanel" class="panel">
+        <div class="legal-content">
+            <h2>Termos de Uso</h2>
+            <p><strong>Última atualização:</strong> 16 de Junho de 2026</p>
+            <p>Estes Termos de Uso regem o acesso e a utilização do aplicativo Z'up. Ao criar uma conta ou usar o serviço, você concorda integralmente com estas condições.</p>
+
+            <h3>1. Da Conta do Usuário</h3>
+            <p>Para utilizar determinados recursos, é necessário criar uma conta. Você é responsável por manter a confidencialidade de sua senha e por todas as atividades realizadas sob sua conta. As informações fornecidas devem ser verdadeiras, precisas e atualizadas.</p>
+
+            <h3>2. Conduta e Conteúdo Proibido</h3>
+            <p>É expressamente proibido publicar ou compartilhar: conteúdo ilegal, discurso de ódio, assédio moral ou sexual, material com violência explícita, nudez ou atos obscenos, violação de direitos autorais, informações falsas ou enganosas, ou qualquer outro material que infrinja os direitos de terceiros.</p>
+            <p>O Z'up poderá remover qualquer conteúdo que viole estas regras, bem como suspender ou encerrar a conta do infrator, sem aviso prévio.</p>
+
+            <h3>3. Propriedade Intelectual</h3>
+            <p>Todo o código, design, marcas, logos e elementos visuais do Z'up são de propriedade exclusiva da Empresa. O usuário mantém a propriedade do conteúdo que publicar, mas concede ao Z'up uma licença não exclusiva para armazenar, exibir e distribuir esse conteúdo no âmbito da plataforma.</p>
+
+            <h3>4. Assinaturas e Pagamentos</h3>
+            <p>Recursos adicionais podem ser oferecidos mediante assinatura paga (planos mensais ou anuais). Os preços e benefícios são informados antes da contratação. O cancelamento deve ser realizado diretamente na loja de aplicativos (Google Play Store ou Apple App Store).</p>
+
+            <h3>5. Limitação de Responsabilidade</h3>
+            <p>O Z'up é uma plataforma de interação e engajamento. Não garantimos resultados específicos provenientes do uso do aplicativo. Em nenhum caso a Empresa será responsável por danos indiretos, incidentais ou consequenciais decorrentes do uso ou incapacidade de uso do Serviço.</p>
+
+            <h3>6. Modificações nos Termos</h3>
+            <p>Podemos revisar estes Termos periodicamente. A versão atualizada será publicada nesta página com uma nova data de "Última atualização". O uso contínuo do aplicativo após as alterações constitui aceitação dos novos termos.</p>
+
+            <h3>7. Contato</h3>
+            <p>Dúvidas ou notificações: <strong>zup@gmail.com</strong></p>
+        </div>
+    </div>
+
+    <!-- ========== RESTAURAÇÃO DE COMPRA ========== -->
+    <div id="restorePanel" class="panel">
+        <div class="legal-content">
+            <h2>Política de Restauração de Compras</h2>
+            <p><strong>Última atualização:</strong> 16 de Junho de 2026</p>
+            <p>Esta política se aplica a usuários que adquiriram assinaturas ou recursos premium no Z'up e desejam restaurar essas compras em outro dispositivo ou após reinstalação.</p>
+
+            <h3>1. Quem pode restaurar</h3>
+            <p>Usuários que tenham realizado compras legítimas por meio da Google Play Store ou Apple App Store, utilizando o mesmo ID de conta.</p>
+
+            <h3>2. Como restaurar</h3>
+            <p>No aplicativo Z'up, acesse: <strong>Perfil → Configurações → Restaurar Compras</strong>. O sistema verificará automaticamente as compras associadas à sua conta da loja e reativará os benefícios premium.</p>
+
+            <h3>3. Requisitos necessários</h3>
+            <ul>
+                <li>Estar logado com a mesma conta Google/Apple utilizada na compra original;</li>
+                <li>Conexão estável com a internet;</li>
+                <li>A compra deve estar válida (não expirada ou reembolsada).</li>
+            </ul>
+
+            <h3>4. Limitações</h3>
+            <p>A restauração não gera uma nova compra – apenas recupera compras já existentes. Não é possível transferir compras entre contas diferentes.</p>
+
+            <h3>5. Reembolsos</h3>
+            <p>Pedidos de reembolso devem ser solicitados diretamente à Google Play Store ou Apple App Store, conforme as políticas de cada loja. O Z'up não realiza reembolsos diretamente.</p>
+
+            <div class="restore-card">
+                <p style="font-weight: 500; margin-bottom: 0.5rem;">🔄 Restauração integrada</p>
+                <p style="font-size: 0.85rem;">Clique no botão abaixo para simular o processo (ambiente demonstrativo). Em produção, o sistema validará sua compra automaticamente.</p>
+                <button id="restoreBtn" class="btn-restore">↻ Restaurar minhas compras</button>
+            </div>
+
+            <h3>6. Suporte</h3>
+            <p>Se a restauração automática falhar, entre em contato com nosso suporte pelo e-mail <strong>zup@gmail.com</strong>, informando o comprovante de pagamento e o e-mail associado à sua conta. Faremos o possível para regularizar seu acesso premium.</p>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        Z'up · Plataforma de engajamento · Documentos legais versão 2.0
+    </div>
+</div>
+
+<script>
+    (function() {
+        const tabs = document.querySelectorAll('.tab-btn');
+        const panels = {
+            privacy: document.getElementById('privacyPanel'),
+            terms: document.getElementById('termsPanel'),
+            restore: document.getElementById('restorePanel')
+        };
+
+        function activatePanel(panelId) {
+            Object.values(panels).forEach(p => p.classList.remove('active-panel'));
+            tabs.forEach(btn => btn.classList.remove('active'));
+            if (panels[panelId]) panels[panelId].classList.add('active-panel');
+            const activeBtn = Array.from(tabs).find(btn => btn.getAttribute('data-tab') === panelId);
+            if (activeBtn) activeBtn.classList.add('active');
+        }
+
+        tabs.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabName = btn.getAttribute('data-tab');
+                if (tabName === 'privacy') activatePanel('privacy');
+                else if (tabName === 'terms') activatePanel('terms');
+                else if (tabName === 'restore') activatePanel('restore');
+            });
+        });
+
+        // Simulação de restauração (feedback elegante)
+        const restoreBtn = document.getElementById('restoreBtn');
+        if (restoreBtn) {
+            restoreBtn.addEventListener('click', function() {
+                const originalHtml = restoreBtn.innerHTML;
+                restoreBtn.disabled = true;
+                restoreBtn.innerHTML = '⏳ Verificando compras...';
+                setTimeout(() => {
+                    const card = document.querySelector('.restore-card');
+                    let msg = card.querySelector('.restore-feedback');
+                    if (!msg) {
+                        msg = document.createElement('div');
+                        msg.className = 'restore-feedback';
+                        msg.style.marginTop = '14px';
+                        msg.style.fontSize = '0.8rem';
+                        msg.style.padding = '10px';
+                        msg.style.borderRadius = '14px';
+                        msg.style.backgroundColor = '#f0f0f0';
+                        msg.style.color = '#000';
+                        msg.style.textAlign = 'center';
+                        card.appendChild(msg);
+                    }
+                    msg.innerHTML = '✅ Compra restaurada com sucesso. Seus benefícios premium foram reativados.';
+                    restoreBtn.disabled = false;
+                    restoreBtn.innerHTML = originalHtml;
+                    setTimeout(() => {
+                        if (msg) msg.remove();
+                    }, 5000);
+                }, 1300);
+            });
+        }
+
+        // Hash na URL
+        if (window.location.hash) {
+            const hash = window.location.hash.substring(1).toLowerCase();
+            if (hash === 'privacidade' || hash === 'privacy') activatePanel('privacy');
+            else if (hash === 'termos' || hash === 'terms') activatePanel('terms');
+            else if (hash === 'restauracao' || hash === 'restore') activatePanel('restore');
+        }
+    })();
+</script>
+</body>
+</html>
